@@ -1,0 +1,9 @@
+{
+ "version": "0.2.0",
+ "configurations": [
+ { "name": "encode", "type": "debugpy", "request": "launch",
+ "program": "${workspaceFolder}/encode.py", "console": "integratedTerminal" },
+ { "name": "decode", "type": "debugpy", "request": "launch",
+ "program": "${workspaceFolder}/decode.py", "console": "integratedTerminal" }
+ ]
+}
