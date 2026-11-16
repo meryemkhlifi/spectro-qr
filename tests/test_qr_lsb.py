@@ -26,3 +26,8 @@ def test_max_diff_is_1(cover, tmp_path):
     a = np.array(Image.open(cover)).astype(int)
     b = np.array(Image.open(out)).astype(int)
     assert np.abs(a - b).max() <= 1
+def test_capacity_too_small(tmp_path):
+    p = tmp_path / "small.png"
+    Image.fromarray(np.zeros((100, 100, 3), dtype=np.uint8)).save(p)   # 10 000 px < 160 000 bits
+    with pytest.raises(AssertionError):
+        embed_qr(str(p), os.urandom(32), "pwd", str(tmp_path / "o.png"))
